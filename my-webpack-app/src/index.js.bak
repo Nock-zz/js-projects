@@ -1,0 +1,172 @@
+import {Contract, Wavelet} from "wavelet-client";
+
+let client;
+let consensus;
+let wallet;
+let walletAddress;
+let nodeInfo;
+let account;
+let host = 'https://testnet.perlin.net';
+let privateKey = "924b7d25ab23d363b1cc20617a03b6218959c492311aa93d9cdb9d56740bd71b01fdcd2a7aadc4d746bb17a39e98416a86382f7c383b5bdf0778960ecfc45761";
+let contractAddress = "e9f2ad605ba8816bae31bcf4e68d6a15e374a48f3ae4c8f0df1b851d56ebfaab";
+
+
+client = new Wavelet('https://testnet.perlin.net');    //new Wavelet(host);
+console.log(client);
+
+wallet = Wavelet.loadWalletFromPrivateKey(privateKey);
+walletAddress = Buffer.from(wallet.publicKey).toString('hex');
+
+async function fetchNodeInfo() {
+return await client.getNodeInfo()
+// .then((result) => {console.log("nodeInfo resolved:", result.public_key, "(" + result.address + ")"); return result.public_key});
+};
+
+function setNodeInfo(_await_client_getNodeInfo) {
+    nodeInfo = _await_client_getNodeInfo;
+}
+    
+
+
+//(async () => {
+//nodeInfo = await fetchNodeInfo(); 
+//console.log('after await', nodeInfo);
+// .then((result) => {console.log("nodeInfo resolved:", result.public_key, "(" + result.address + ")"); return result.public_key});
+//})();
+
+
+//nodeInfo = client.getNodeInfo()
+//    .then((result) => {console.log("nodeInfo resolved:", result.public_key, "(" + result.address + ")");});
+//nodeInfo.then((result) =>  {console.log("nodeInfo resolved:", result.public_key, "(" + result.address + ")");});
+//nodeInfo.catch((result) => {console.log("failed to resolve");});
+
+const connect = async () => {
+//    if (client === undefined) {
+//      try {
+//        nodeInfo = await client.getNodeInfo();
+
+        account = await client.getAccount(walletAddress);
+
+//        setClient(client);
+//
+//        sockets.accounts = await client.pollAccounts(
+//          {
+//            onAccountUpdated: msgs => {
+//              msgs.forEach(msg => {
+//                switch (msg.event) {
+//                  case 'balance_updated': {
+//                    setAccount({ ...accountRef.current, balance: msg.balance });
+//                    break;
+//                  }
+//                  default: {
+//                    break;
+//                  }
+//                }
+//              });
+//            }
+//          },
+//          { id: walletAddress }
+//        );
+//
+//        setSockets(sockets);
+//      } catch (error) {
+//        reset();
+//        alert(error);
+//      }
+//    } else {
+//      reset();
+//    }
+  };
+
+
+console.log(wallet);
+console.log(walletAddress);
+
+
+
+//const client = new Wavelet('https://testnet.perlin.net');
+//const wallet = Wavelet.loadWalletFromPrivateKey("924b7d25ab23d363b1cc20617a03b6218959c492311aa93d9cdb9d56740bd71b01fdcd2a7aadc4d746bb17a39e98416a86382f7c383b5bdf0778960ecfc45761");
+
+const contract = new Contract(client, contractAddress);
+
+
+
+let init = contract.init();
+console.log('init::', init);
+
+init.then( () => {
+    console.log('init:', 'ok');
+      let memPages = contract.fetchAndPopulateMemoryPages();
+      memPages.then( () => {console.log('memPages:', 'ok', memPages); });
+      memPages.catch( (err) => {console.log('memPages err:','fails', err )}   );
+//          let poll = client.pollConsensus(
+//               {
+//                onRoundEnded: _ => {
+//                        console.log("Chat logs updated:", contract.test('get_messages', BigInt(0)));
+//                        }
+//                }
+//              );
+//           poll.then( () => {console.log('poll', 'ok', poll);});
+//           poll.catch( (err) => {console.log('poll err', err);});
+
+    });
+    init.catch( (err) => {console.log('init err:','fails', err )}   );
+
+//let memPages = contract.fetchAndPopulateMemoryPages();
+//memPages.then( () => {console.log('memPages:', 'ok')});
+//memPages.catch( (err) => {console.log('memPages err:','fails', err )}   );
+
+
+(async () => {
+        await contract.init();
+//        nodeInfo = await fetchNodeInfo();
+        setNodeInfo(await client.getNodeInfo());  
+        console.log('fetched nodeInfo via setNodeInfo', nodeInfo);
+//        contract.fetchAndPopulateMemoryPages(); 
+//        client.pollConsensus(
+//        {
+//    	onRoundEnded: _ => {
+//        (async () => {
+//            await contract.fetchAndPopulateMemoryPages();
+//            console.log("Chat logs updated:", contract.test('get_messages', BigInt(0)));
+//        })();
+//          }
+//        }              
+//        ).then( (res) => {console,log('ok', res)})
+//         .catch( (res) => {console.log('err', res)} );   
+
+
+})()
+
+//(async () => {
+
+//        client.pollConsensus(  
+//        {
+//        onRoundEnded: _ => {
+//        (async () => {
+//            await contract.fetchAndPopulateMemoryPages();
+//            console.log("Chat logs updated:", contract.test('get_messages', BigInt(0)));
+//        })();
+//          }
+//        } 
+//        ).then( (res) => {console,log('ok', res)})
+//         .catch( (res) => {console.log('err', res)} );
+
+//})()
+//client.pollConsensus()
+//contract.fetchAndPopulateMemoryPages()
+console.log(contract);
+
+
+
+
+// console.log(globalThis);
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  const element = document.createElement('h1')
+  element.innerHTML = "Hello World 2"
+  document.body.appendChild(element)
+})
+
+
+

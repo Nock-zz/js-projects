@@ -1,0 +1,37 @@
+{
+  "name": "my-webpack-app",
+  "version": "1.0.0",
+  "description": "webpack with vanilla js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --mode development --open",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/register": "^7.5.5",
+    "@babel/runtime-corejs3": "^7.5.5",
+    "core-js": "^3.1.4",
+    "css-loader": "^3.0.0",
+    "express-favicon": "^2.0.1",
+    "script-loader": "^0.7.2",
+    "style-loader": "^0.23.1",
+    "wavelet-client": "^1.1.0",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@babel/plugin-transform-spread": "^7.2.2",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
+    "websocket": "^1.0.28"
+  }
+}

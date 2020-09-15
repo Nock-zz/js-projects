@@ -1,0 +1,12 @@
+{
+"presets": ["env"],
+"plugins": [
+    [
+        require("@babel/plugin-transform-modules-commonjs"), 
+        {
+            strictMode: false
+        }
+    ],
+    ["transform-remove-strict-mode"]
+]
+}

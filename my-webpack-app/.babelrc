@@ -1,0 +1,10 @@
+{
+"presets": ["@babel/preset-env", {
+            "useBuiltIns": "usage",
+            "corejs": 3,
+            "debug": true
+           }],
+"ignore" : [
+        "/home/gnock/imba/my-webpack-app/node_modules/websocket/lib/browser.js"
+],
+}

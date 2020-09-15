@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="./shared.css" type="text/css" rel="stylesheet">
+    <title>Wavelet Chat</title>
+  </head>
+  <body style="margin: 50px; padding:20px;">
+    <h1>A decentralized chat written in JavaScript + Rust (WebAssembly).</h1>
+    <h4>Powered by Wavelet. Click here to learn how it works, and here for the source code. Join our Discord to get PERLs.</h4>
+    <div class="secret">
+        <label for="private-key">[secret]</label>
+        <input style="width: 29rem;" type="text" name="private-key" id="private-key" data-lpignore="true" >
+        <button style="width: 10rem;" class="node-button" >Set Default Private Key</button>
+    </div>
+    <div  class="node">
+        <label for="node">[node]</label>
+        <input style="width: 29rem;"type="text" name="node" id="node" data-lpignore="true" value="https://testnet.perlin.net" >
+        <button style="width: 10rem;" class="node-button" >Connect</button>
+    </div>
+    <div  class="contract">
+        <label for="contract">[contract]</label>
+        <input style="width: 29rem;" type="text" name="contract" id="contract" placeholder="input chat contract address..." data-lpignore="true" value="">
+        <button style="width: 10rem;" class="contract-button"  disabled >Load Contract</button>
+    </div>
+    <div class = "node-id">
+        <label for="node-id">[node id]</label>
+        <span style="width: 14rem;" class="truncate" id="node-id" title="???">???</span>
+    </div>
+    <div class = "your-balance">
+        <label for="your-balance">[your balance]</label>
+        <span style="width: 14rem;" class="truncate" id="your-balance" title="0 PERL(s)">0 PERL(s)</span>
+    </div>
+    <div class = "contract-gas-balance">
+        <label for="contract-gas-balance">[contract gas balance]</label>
+        <span style="width: 14rem;" class="truncate" id="contract-gas-balance" title="0 PERL(s)">0 PERL(s)</span>
+    </div>
+    <div style="vertical-align: bottom;"  class="message">
+        <input style="width: 25rem;" placeholder="enter a message..." maxlength="240" class="fw" ></input>
+        <button style="width: 14rem;" class="message-button" disabled >Send Message [2 PERLs]</button>
+    </div>
+    <div class="chat-messages">
+        <textarea style="width: 40rem;" class="fw" rows="35" readonly="" placeholder="no messages here so far chief..." disabled=""></textarea>
+    </div>
+    <script type="module" src="bundle.js"></script>
+  </body>
+</html>
