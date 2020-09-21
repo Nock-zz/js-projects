@@ -14,7 +14,7 @@ return <div>
       </div>;
 };
 
-// render the result to the DOM
+// render the result to the DOM using ReactDOM
 ReactDOM.render(
 <App />,
 document.querySelector('#root')
