@@ -1,0 +1,24 @@
+import React from 'react';
+
+
+class SearchBar extends React.Component {
+    state ={term: ''};
+      onFormSubmit = (event) => {
+      event.preventDefault();
+      this.props.onSubmit(this.state.term);    
+      }
+    render() {
+        return (
+        <div className="ui segment">
+            <form onSubmit={this.onFormSubmit} className="ui fluid input">
+                    <div>
+                        <label>Search Image</label>
+                    </div>
+                    <input type="text" value={this.state.term} onChange={(e) => this.setState( {term: e.target.value} )} placeholder="Search..." /> 
+            </form>
+        </div>
+        );
+    }
+};
+
+export default SearchBar;
