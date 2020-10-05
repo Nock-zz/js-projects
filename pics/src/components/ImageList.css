@@ -1,0 +1,12 @@
+.image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* makes the columns an even 250px */
+    gap: 0 5px;                                                     /* sets a gap in 2D */
+    grid-auto-rows: 10px;                                        /* fixes the row height */
+}
+
+.image-list img {
+    width: 275px;                                           /* set the image width */
+    grid-row-end: span 2;                                   /* truncate image after 2 - need variable - rows*/
+    ;
+}
